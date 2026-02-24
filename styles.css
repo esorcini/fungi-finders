@@ -179,21 +179,9 @@
   a:focus-visible {
     color: var(--text-brand-light);
   }
-}
 
-@layer utilities {
-  .visually-hidden {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
-
-  .title-highlight {
-    color: var(--text-brand);
+  img {
+    border-radius: var(--border-radius-3);
   }
 }
 
@@ -203,28 +191,29 @@
   .section {
     /* padding for vertical spacing. block = top to bottom */
     /* padding is in rem to account for users that have larger fonts in their devices. So the padding is adjusted scaled to the fonts */
-    padding-block: 4.5rem;
+    padding-block: 3.75rem;
 
-    @media (width < 720px) {
-      padding-block: 3.75rem;
+    @media (width > 760px) {
+      padding-block: 4.5rem;
     }
   }
 
   .section--tall {
-    padding-block: 8rem;
+    padding-block: 3.75rem;
 
-    @media (width < 720px) {
-      padding-block: 3.75rem;
+    @media (width > 760px) {
+      padding-block: 8rem;
     }
   }
 
   .wrapper {
     max-width: calc(1130px + 2rem);
     margin-inline: auto;
+    /* Padding for mobile resolutions. inline = left to right*/
+    padding-inline: 1rem;
 
-    @media (width < 720px) {
-      /* Padding for mobile resolutions. inline = left to right*/
-      padding-inline: 1rem;
+    @media (width > 760px) {
+      padding-inline: 0rem;
     }
   }
 
@@ -241,14 +230,48 @@
   }
 }
 
+@layer components {
+  .site-header-layout {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-block: 1rem;
+
+    .site-header-navigation ul {
+      display: flex;
+      gap: 2rem;
+      list-style-type: none;
+    }
+  }
+
+  .auto-equal-columns {
+    display: grid;
+    gap: 1rem;
+
+    @media (width > 760px) {
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+    }
+  }
+
+  .columns-large-gap {
+    gap: 1.75rem;
+  }
+
+  .columns-vertical-center {
+    align-items: center;
+  }
+}
+
 @layer styles {
   .hero {
     h1 {
       font-size: var(--font-size-heading-lg);
       text-align: center;
+      line-height: 1;
 
-      @media (width < 720px) {
-        line-height: 1;
+      @media (width > 760px) {
+        line-height: normal;
       }
     }
 
@@ -257,5 +280,21 @@
       font-size: var(--font-size-md);
       line-height: 1.6;
     }
+  }
+}
+
+@layer utilities {
+  .visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .title-highlight {
+    color: var(--text-brand);
   }
 }

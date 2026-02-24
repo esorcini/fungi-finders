@@ -13,11 +13,11 @@
     <title>FungiFinders</title>
   </head>
   <body>
-    <main>
-      <header class="site-header">
-        <div class="wrapper wrapper--wide">
+    <header class="site-header">
+      <div class="wrapper wrapper--wide">
+        <div class="site-header-layout">
           <img src="/assets/logo.svg" alt="Fungi Finders" />
-          <nav class="header-navigation">
+          <nav class="site-header-navigation">
             <ul>
               <li><a href="/">Discover</a></li>
               <li><a href="#">Mushroom guide</a></li>
@@ -25,8 +25,9 @@
             </ul>
           </nav>
         </div>
-      </header>
-
+      </div>
+    </header>
+    <main>
       <section class="hero section">
         <div class="wrapper">
           <h1>
@@ -62,7 +63,7 @@
               culinary treasure.
             </p>
           </div>
-          <div class="benefit-cards">
+          <div class="benefit-cards auto-equal-columns">
             <div class="card">
               <img
                 src="/assets/outdoor-exploration.webp"
@@ -125,7 +126,9 @@
       </section>
 
       <section class="info section section--tall">
-        <div class="wrapper wrapper--wide">
+        <div
+          class="wrapper wrapper--wide auto-equal-columns columns-large-gap columns-vertical-center"
+        >
           <div>
             <img
               src="/assets/man-picking-mush.webp"
@@ -155,21 +158,30 @@
       </section>
 
       <section class="connect section section--tall">
-        <div class="wrapper wrapper--wide">
-          <h2>Connect with Nature</h2>
-          <p>
-            Experience the beauty of the great outdoors while foraging for
-            mushrooms with fellow enthusiasts.
-          </p>
-          <a href="#" class="button"
-            >Learn More
-            <span class="visually-hidden"
-              >about all the types of mushrooms you can find, using our
-              guide.</span
-            ></a
-          >
+        <div
+          class="wrapper wrapper--wide auto-equal-columns columns-large-gap columns-vertical-center"
+        >
+          <div>
+            <h2>Connect with Nature</h2>
+            <p>
+              Experience the beauty of the great outdoors while foraging for
+              mushrooms with fellow enthusiasts.
+            </p>
+            <a href="#" class="button"
+              >Learn More
+              <span class="visually-hidden"
+                >about all the types of mushrooms you can find, using our
+                guide.</span
+              ></a
+            >
+          </div>
+          <div>
+            <img
+              src="/assets/nature.webp"
+              alt="Green land with a few mushrooms"
+            />
+          </div>
         </div>
-        <img src="/assets/nature.webp" alt="Green land with a few mushrooms" />
       </section>
     </main>
 
