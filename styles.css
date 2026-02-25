@@ -131,15 +131,15 @@
     --background-extra-dark: var(--clr-brown-900);
 
     /* SEMANTIC FONTS */
-    --font-size-heading-sm: var(--fs-700);
-    --font-size-heading-regular: var(--fs-800);
-    --font-size-heading-lg: var(--fs-900);
-    --font-size-heading-xl: var(--fs-1000);
-
     --font-size-sm: var(--fs-300);
     --font-size-regular: var(--fs-400);
     --font-size-md: var(--fs-500);
     --font-size-lg: var(--fs-600);
+
+    --font-size-heading-sm: var(--fs-700);
+    --font-size-heading-regular: var(--fs-800);
+    --font-size-heading-lg: var(--fs-900);
+    --font-size-heading-xl: var(--fs-1000);
 
     /* BORDER RADIUS */
     --border-radius-1: 0.25rem;
@@ -191,23 +191,23 @@
   .section {
     /* padding for vertical spacing. block = top to bottom */
     /* padding is in rem to account for users that have larger fonts in their devices. So the padding is adjusted scaled to the fonts */
-    padding-block: 3.75rem;
+    padding-block: var(--section-vertical-padding, 0.75rem);
 
     @media (width > 760px) {
-      padding-block: 4.5rem;
+      --section-vertical-padding: 4.5rem;
     }
   }
 
   .section--tall {
-    padding-block: 3.75rem;
+    --section-vertical-padding: 3.75rem;
 
     @media (width > 760px) {
-      padding-block: 8rem;
+      --section-vertical-padding: 8rem;
     }
   }
 
   .wrapper {
-    max-width: calc(1130px + 2rem);
+    max-width: var(--wrapper-max-width, calc(1130px + 2rem));
     margin-inline: auto;
     /* Padding for mobile resolutions. inline = left to right*/
     padding-inline: 1rem;
@@ -218,30 +218,15 @@
   }
 
   .wrapper--narrow {
-    max-width: calc(720px + 2rem);
+    --wrapper-max-width: calc(720px + 2rem);
   }
 
   .wrapper--wide {
-    max-width: calc(1340px + 2rem);
+    --wrapper-max-width: calc(1340px + 2rem);
   }
 
   .wrapper--footer {
-    max-width: calc(400px + 2rem);
-  }
-}
-
-@layer components {
-  .site-header-layout {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding-block: 1rem;
-
-    .site-header-navigation ul {
-      display: flex;
-      gap: 2rem;
-      list-style-type: none;
-    }
+    --wrapper-max-width: calc(400px + 2rem);
   }
 
   .auto-equal-columns {
@@ -261,24 +246,55 @@
   .columns-vertical-center {
     align-items: center;
   }
+
+  /* Adds margin to the top of the child elements, depending on their font-size. It skips the first children. Also: .flow > :where(:not(:first-child)) 
+  */
+  .text-flow > * + * {
+    margin-block-start: var(--flow-space, 1em);
+  }
+
+  .components-flow {
+    display: grid;
+    gap: var(--components-flow-gap, 1rem);
+
+    align-items: start;
+    justify-items: start;
+  }
 }
 
-@layer styles {
-  .hero {
-    h1 {
-      font-size: var(--font-size-heading-lg);
-      text-align: center;
-      line-height: 1;
+@layer components {
+  .site-header-layout {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-block: 1rem;
 
-      @media (width > 760px) {
-        line-height: normal;
-      }
+    .site-header-navigation ul {
+      display: flex;
+      gap: 2rem;
+      list-style-type: none;
+    }
+  }
+
+  .hero {
+    font-size: var(--font-size-md);
+    text-align: center;
+    background-image: url(/assets/background.webp);
+    background-size: cover;
+
+    .hero-title {
+      font-size: var(--font-size-heading-lg);
     }
 
-    p {
-      font-family: var(--ff-heading);
-      font-size: var(--font-size-md);
-      line-height: 1.6;
+    .title-highlight {
+      font-size: var(--font-size-heading-xl);
+      display: block;
+    }
+
+    @media (width > 760px) {
+      p {
+        padding-inline: 205px;
+      }
     }
   }
 }
