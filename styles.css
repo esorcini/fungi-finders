@@ -267,11 +267,64 @@
     justify-content: space-between;
     flex-wrap: wrap;
     padding-block: 1rem;
+  }
 
-    .site-header-navigation ul {
+  #nav-toggle {
+    display: none;
+    z-index: 100;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+  }
+
+  .site-header-nav-bar {
+    ul {
       display: flex;
-      gap: 2rem;
-      list-style-type: none;
+      flex-wrap: wrap;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 0rem 2rem;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  @media (width < 760px) {
+    #nav-toggle {
+      display: block;
+    }
+
+    .site-header-nav-bar {
+      display: none;
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      right: 0;
+      padding: 2rem;
+      background-color: var(--background-accent-main);
+      border-bottom-left-radius: var(--border-radius-3);
+    }
+
+    ul {
+      flex-direction: column;
+      gap: 0rem;
+      font-family: var(--ff-heading);
+      font-size: var(--font-size-heading-sm);
+      font-weight: 600;
+
+      li + li {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 2px solid var(--background-accent-light);
+      }
+    }
+
+    /* Selects the navbar if the previous sibling (in any order of precedence) having the attribute as true (the button in this case) is present. This is toggled via JS */
+    [aria-expanded="true"] ~ .site-header-nav-bar {
+      display: block;
     }
   }
 
@@ -349,6 +402,16 @@
 
   .info {
     background-color: var(--background-extra-dark);
+
+    img {
+      border-radius: var(--border-radius-3);
+    }
+  }
+
+  .connect {
+    img {
+      border-radius: var(--border-radius-3);
+    }
   }
 
   .site-footer {
