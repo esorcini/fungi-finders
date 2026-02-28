@@ -99,7 +99,7 @@
     --fs-500: 1.125rem;
     --fs-600: 1.25rem;
     --fs-700: 1.5rem;
-    --fs-800: 2rem;
+    --fs-800: 2.25rem;
     --fs-900: 3.75rem;
     --fs-1000: 3.75rem;
 
@@ -149,7 +149,6 @@
 
   html {
     font-family: var(--ff-body);
-    line-height: 1.5;
   }
 
   /* font-size is set in the body so the base rem stays consistent,
@@ -171,6 +170,10 @@
     letter-spacing: -2%;
   }
 
+  h2 {
+    font-size: var(--font-size-heading-regular);
+  }
+
   a {
     color: var(--text-high-contrast);
   }
@@ -178,10 +181,6 @@
   a:hover,
   a:focus-visible {
     color: var(--text-brand-light);
-  }
-
-  img {
-    border-radius: var(--border-radius-3);
   }
 }
 
@@ -253,7 +252,7 @@
     margin-block-start: var(--flow-space, 1em);
   }
 
-  .components-flow {
+  .column-flow {
     display: grid;
     gap: var(--components-flow-gap, 1rem);
 
@@ -295,6 +294,84 @@
       p {
         padding-inline: 205px;
       }
+    }
+  }
+
+  .card {
+    display: grid;
+    gap: var(--components-flow-gap, 1rem);
+    align-items: start;
+    justify-items: start;
+
+    background-color: var(--background-light);
+    padding: 1rem;
+    border-radius: var(--border-radius-3);
+
+    img {
+      border-radius: var(--border-radius-2);
+    }
+
+    .card-title {
+      font-size: var(--card-title-font-size, var(--font-size-heading-sm));
+      color: var(--card-title-font-color, var(--text-brand));
+    }
+  }
+
+  .cta {
+    background-color: var(--background-accent-dark);
+    text-align: center;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+
+    p {
+      font-size: var(--font-size-lg);
+      color: var(--text-high-contrast);
+    }
+  }
+
+  .button {
+    display: inline flex;
+    text-decoration: none;
+    background-color: var(--background-accent-main);
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--border-radius-1);
+    cursor: pointer;
+    font-family: var(--ff-heading);
+    font-size: var(--font-size-md);
+    font-weight: 500;
+  }
+
+  .button:hover,
+  button:focus-visible {
+    color: var(--text-high-contrast);
+    background-color: var(--background-accent-light);
+  }
+
+  .info {
+    background-color: var(--background-extra-dark);
+  }
+
+  .site-footer {
+    background-color: var(--background-dark);
+    text-align: center;
+    padding-block: 2rem;
+
+    display: grid;
+    gap: 2rem;
+
+    h4 {
+      font-size: var(--font-size-md);
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    a {
+      color: var(--text-main);
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: var(--text-high-contrast);
     }
   }
 }
