@@ -13,6 +13,14 @@
     text-size-adjust: none;
   }
 
+  /* Setting the smooth scrolling only for people that does not have exluded them */
+  /* If a person suffers for this type of movements, it's highly likely to have "prefers-reduced-motion: reduced" set on their systems */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   * {
     margin: 0;
   }
@@ -373,7 +381,6 @@
   }
 
   .card {
-    /* display: grid; */
     gap: var(--card-gap, 1rem);
     display: flex;
     flex-direction: column;
@@ -510,6 +517,73 @@
 
   .faq {
     background-color: var(--background-extra-dark);
+  }
+
+  .bento-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-areas:
+      "one"
+      "two"
+      "three"
+      "four";
+
+    .card-title {
+      --card-title-font-size: 2rem;
+      --card-title-font-color: var(--text-high-contrast);
+    }
+
+    .card > img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card:nth-child(1) {
+      grid-area: one;
+    }
+
+    .card:nth-child(2) {
+      grid-area: two;
+    }
+
+    .card:nth-child(3) {
+      grid-area: three;
+    }
+
+    .card:nth-child(4) {
+      grid-area: four;
+    }
+
+    @media (width > 600px) {
+      grid-template-areas:
+        "one    two"
+        "three  four";
+
+      .card:nth-child(even) > img {
+        order: 3;
+      }
+    }
+
+    @media (width > 900px) {
+      grid-template-areas:
+        "one    two     four"
+        "three  three   four";
+
+      .card:nth-child(3) {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr 1fr;
+
+        img {
+          grid-column: 1/2;
+          grid-row: 1/3;
+        }
+      }
+
+      .card:nth-child(2) > img {
+        order: 3;
+      }
+    }
   }
 
   .site-footer {
