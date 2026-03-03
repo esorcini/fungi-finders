@@ -446,6 +446,23 @@
     }
   }
 
+  .select-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    select {
+      padding: 0.5rem 1.75rem 0.5rem 1rem;
+      border-radius: var(--border-radius-1);
+      background-color: var(--background-accent-main);
+      border: 0;
+
+      font-family: var(--ff-heading);
+      color: var(--text-high-contrast);
+      font-weight: 400;
+    }
+  }
+
   .button {
     display: inline flex;
     text-decoration: none;
