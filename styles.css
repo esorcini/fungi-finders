@@ -27,7 +27,7 @@
 
   body {
     min-block-size: 100vh;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   h1,
@@ -246,6 +246,13 @@
     align-items: center;
   }
 
+  .auto-fit-grid {
+    display: grid;
+    gap: 1rem;
+    /* The auto-fit will create columns automatically with the minimum width of 300px -and no less that that, due to the min(300px, 100%)-. On mobile, it will use the 1fr default given the reduced viewport */
+    grid-template-columns: repeat(auto-fit, minmax(min(275px, 100%), 1fr));
+  }
+
   /* Adds margin to the top of the child elements, depending on their font-size. It skips the first children. Also: .flow > :where(:not(:first-child)) 
   */
   .text-flow > * + * {
@@ -306,19 +313,19 @@
       padding: 2rem;
       background-color: var(--background-accent-main);
       border-bottom-left-radius: var(--border-radius-3);
-    }
 
-    ul {
-      flex-direction: column;
-      gap: 0rem;
-      font-family: var(--ff-heading);
-      font-size: var(--font-size-heading-sm);
-      font-weight: 600;
+      ul {
+        flex-direction: column;
+        gap: 0rem;
+        font-family: var(--ff-heading);
+        font-size: var(--font-size-heading-sm);
+        font-weight: 600;
 
-      li + li {
-        margin-top: 2rem;
-        padding-top: 2rem;
-        border-top: 2px solid var(--background-accent-light);
+        li + li {
+          margin-top: 2rem;
+          padding-top: 2rem;
+          border-top: 2px solid var(--background-accent-light);
+        }
       }
     }
 
@@ -343,6 +350,10 @@
       display: block;
     }
 
+    p {
+      color: var(--text-high-contrast);
+    }
+
     @media (width > 760px) {
       p {
         padding-inline: 205px;
@@ -350,9 +361,22 @@
     }
   }
 
+  .mushroom-guide {
+    --card-title-font-size: var(--font-size-md);
+    --card-title-font-color: var(--text-high-contrast);
+    --card-gap: 0.75rem;
+
+    p {
+      line-height: 25px;
+      letter-spacing: -1%;
+    }
+  }
+
   .card {
-    display: grid;
-    gap: var(--components-flow-gap, 1rem);
+    /* display: grid; */
+    gap: var(--card-gap, 1rem);
+    display: flex;
+    flex-direction: column;
     align-items: start;
     justify-items: start;
 
@@ -368,12 +392,52 @@
       font-size: var(--card-title-font-size, var(--font-size-heading-sm));
       color: var(--card-title-font-color, var(--text-brand));
     }
+
+    .card-text {
+      margin-block-end: auto;
+    }
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    li {
+      padding: 0rem 0.5rem;
+      border-radius: var(--border-radius-1);
+      background-color: var(--tag-bg, var(--background-accent-main));
+
+      font-family: var(--ff-heading);
+      font-size: var(--font-size-sm);
+      color: var(--text-high-contrast);
+    }
+
+    [data-edible="toxic"] {
+      --tag-bg: var(--clr-red-500);
+    }
+
+    [data-season="spring"] {
+      --tag-bg: var(--clr-teal-500);
+    }
+
+    [data-season="fall"] {
+      --tag-bg: var(--clr-orange-500);
+    }
+  }
+
+  .card-note {
+    margin-block-start: auto;
+    background-color: var(--background-extra-light);
+    padding: 0.75rem;
+    border-radius: var(--border-radius-2);
+
+    font-size: var(--font-size-sm);
   }
 
   .cta {
     background-color: var(--background-accent-dark);
     text-align: center;
-    line-height: 1.6;
     letter-spacing: 0.5px;
 
     p {
@@ -412,6 +476,23 @@
     img {
       border-radius: var(--border-radius-3);
     }
+  }
+
+  .where-to-look {
+    background-color: var(--background-accent-dark);
+
+    img {
+      border-radius: var(--border-radius-3);
+    }
+
+    p {
+      font-size: var(--font-size-lg);
+      color: var(--text-high-contrast);
+    }
+  }
+
+  .faq {
+    background-color: var(--background-extra-dark);
   }
 
   .site-footer {
