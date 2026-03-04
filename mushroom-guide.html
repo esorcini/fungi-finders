@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <script src="/main.js" defer></script>
+    <script src="/mushroom-filter.js" defer></script>
     <title>FungiFinders</title>
   </head>
   <body>
@@ -92,13 +93,13 @@
           <div class="text-flow">
             <h2>Get to know your mushrooms</h2>
             <div class="select-group">
-              <select name="" id="">
+              <select name="season" id="season" hidden>
                 <option value="all">Season: All</option>
                 <option value="spring">Season: Spring</option>
                 <option value="summer">Season: Summer</option>
                 <option value="fall">Season: Fall</option>
               </select>
-              <select name="" id="">
+              <select name="edible" id="edible" hidden>
                 <option value="all">Type: All</option>
                 <option value="edible">Type: Edible</option>
                 <option value="toxic">Type: Toxic</option>
@@ -106,11 +107,12 @@
             </div>
           </div>
 
-          <div class="auto-fit-grid">
+          <div class="auto-fill-grid">
+            <div class="no-matches" hidden>No matches for these filters</div>
             <div class="card">
               <h3 class="card-title">Chanterelle</h3>
               <ul class="card-tags" role="list">
-                <li data-edible="edible">edible</li>
+                <li data-edible="toxic">toxic</li>
                 <li data-season="summer">summer</li>
               </ul>
               <p>Golden-yellow, funnel-shaped mushroom with false gills</p>
@@ -149,8 +151,8 @@
             <div class="card">
               <h3 class="card-title">Chanterelle</h3>
               <ul class="card-tags" role="list">
-                <li data-edible="edible">edible</li>
-                <li data-season="summer">summer</li>
+                <li data-edible="toxic">toxic</li>
+                <li data-season="fall">fall</li>
               </ul>
               <p>Golden-yellow, funnel-shaped mushroom with false gills</p>
               <div class="card-note">

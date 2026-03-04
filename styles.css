@@ -254,11 +254,11 @@
     align-items: center;
   }
 
-  .auto-fit-grid {
+  .auto-fill-grid {
     display: grid;
     gap: 1rem;
     /* The auto-fit will create columns automatically with the minimum width of 300px -and no less that that, due to the min(300px, 100%)-. On mobile, it will use the 1fr default given the reduced viewport */
-    grid-template-columns: repeat(auto-fit, minmax(min(275px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(275px, 100%), 1fr));
   }
 
   /* Adds margin to the top of the child elements, depending on their font-size. It skips the first children. Also: .flow > :where(:not(:first-child)) 
@@ -612,6 +612,10 @@
 }
 
 @layer utilities {
+  [hidden] {
+    display: none;
+  }
+
   .visually-hidden {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
