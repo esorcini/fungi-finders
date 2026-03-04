@@ -17,6 +17,7 @@ function enableFilters() {
 }
 enableFilters();
 
+// Update cards each time the user changes a filter
 seasonFilter.addEventListener("change", updateFilter);
 edibleFilter.addEventListener("change", updateFilter);
 
@@ -24,6 +25,8 @@ function updateFilter(e) {
   visibleCards = 0;
   currentFilters[e.target.name] = e.target.value;
 
+  // this messes up my implementation of the filter. The one used in the course didn't work for re-tries with no page reloads
+  //   document.startViewTransition(() => filterCards());
   filterCards();
 
   visibleCards === 0
